@@ -55,10 +55,15 @@ public class SrpingSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.
                 // urls publicas.
                 authorizeRequests()
-                        .antMatchers(LOGIN_URL).permitAll()
+                        .antMatchers(LOGIN_URL)
+                            .permitAll()
                 
                 // o restante precisa de login.
-                .anyRequest().authenticated().and().csrf().disable()
+                .anyRequest()
+                    .authenticated()
+                        .and()
+                            .csrf()
+                                .disable()
                 
                 // fomulario de login.
                 .formLogin()
